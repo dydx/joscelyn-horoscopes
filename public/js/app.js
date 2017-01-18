@@ -16,7 +16,7 @@
   }
 
   function displayText (text) {
-    display.classList.remove('hidden');
+    document.querySelector('.message').classList.remove('hidden');
     display.textContent = text;
 
     return text;

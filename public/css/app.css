@@ -1,3 +1,7 @@
 body {
   margin: 1em;
 }
+
+.hidden {
+  display: none;
+}
