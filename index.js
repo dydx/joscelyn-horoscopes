@@ -4,12 +4,12 @@ const cheerio = require('cheerio');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const SCRAPE_URL = 'http://new.theastrologer.com/';
+const SCRAPE_URL = 'https://www.astrology.com/horoscope/daily';
 
 app.use(express.static('public'))
 
 function scrapePage(sign, callback) {
-  request(`${SCRAPE_URL}/${sign}`, function (err, res, body) {
+  request(`${SCRAPE_URL}/${sign}.html`, function (err, res, body) {
     return callback(body);
   });
 }
@@ -22,7 +22,7 @@ app.get('/api/:sign', function (req, res) {
   let sign = req.params.sign;
   scrapePage(sign, function (body) {
     let $ = cheerio.load(body);
-    let today = $('#today > p').text();
+    let today = $('.page-horoscope-text').text();
 
     res.send(today);
   });
