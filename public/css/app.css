@@ -2,6 +2,9 @@ body {
   margin: 1em;
 }
 
+/*
+ * used to hide the message box while it is empty
+ */
 .hidden {
   display: none;
 }
